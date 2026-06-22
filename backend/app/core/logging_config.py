@@ -1,6 +1,6 @@
 import logging
 import logging.config
-from app.core.config import Settings
+from app.core.config import settings
 
 def setup_logging():
     config = {
@@ -8,28 +8,28 @@ def setup_logging():
         "disable_existing_loggers": False,
         "formatters": {
             "default": {
-                "format": "%(ascitime)s [%(levelname)s] %(name)s: %(message)s"
+                "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
             },
         },
         "handlers": {
             "console": {
                 "class": "logging.StreamHandler",
                 "formatter": "default",
-                "level": Settings.LOG_LEVEL
+                "level": settings.LOG_LEVEL
             },
         },
         "root": {
             "handlers": ["console"],
-            "level": Settings.LOG_LEVEL
+            "level": settings.LOG_LEVEL
         },
         "loggers": {
             "app": {
-                "level": Settings.LOG_LEVEL,
+                "level": settings.LOG_LEVEL,
                 "handlers": ["console"],
                 "propagate": False
             },
             "uvicorn": {
-                "level": Settings.LOG_LEVEL,
+                "level": settings.LOG_LEVEL,
                 "handlers": ["console"],
                 "propagate": False
             }
